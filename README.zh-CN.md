@@ -260,10 +260,37 @@ npx reasonix code --dir /path/to/project
 
 <br/>
 
+## 致谢
+
+下面这些朋友的工作塑造了 Reasonix 今天的样子 —— 综合 commit 数和代码量两个维度。
+**按字母顺序排列，排名不分先后。** 完整贡献者列表在
+[GitHub](https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors)。
+
+- [**ctharvey**](https://github.com/ctharvey)
+- [**dimasd-angga**](https://github.com/dimasd-angga)（Dimas D. Angga）
+- [**Evan-Pycraft**](https://github.com/Evan-Pycraft)
+- [**ForeverYoungPp**](https://github.com/ForeverYoungPp)
+- [**GTC2080**](https://github.com/GTC2080)（TaoMu）
+- [**kabaka9527**](https://github.com/kabaka9527)
+- [**lisniuse**](https://github.com/lisniuse)（Richie）
+- [**wade19990814-hue**](https://github.com/wade19990814-hue)
+- [**wviana**](https://github.com/wviana)（Wesley Viana）
+
+另外特别感谢 [**Bernardxu123**](https://github.com/Bernardxu123) 设计的项目 logo
+（见 [`docs/brand/`](./docs/brand/)），以及 [AIGC Link](https://xhslink.com/m/80ngts127cA) 在小红书上的推广。
+
+<p align="center">
+  <a href="https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=esengine/DeepSeek-Reasonix" alt="contributors"/>
+  </a>
+</p>
+
+<br/>
+
 ---
 
 <p align="center">
   <sub>MIT —— 见 <a href="./LICENSE">LICENSE</a></sub>
   <br/>
-  <sub>由 <a href="https://github.com/esengine/reasonix/graphs/contributors">esengine/reasonix</a> 社区共建</sub>
+  <sub>由 <a href="https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors">esengine/DeepSeek-Reasonix</a> 社区共建</sub>
 </p>

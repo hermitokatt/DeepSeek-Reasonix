@@ -290,12 +290,39 @@ Scoped starter tickets — each with background, code pointers, acceptance crite
 
 <br/>
 
+## Acknowledgments
+
+A small list of folks whose work has shaped Reasonix the most — measured
+by both commit count and code volume. **Listed alphabetically, no ordering
+of importance.** The full contributor graph is on
+[GitHub](https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors).
+
+- [**ctharvey**](https://github.com/ctharvey)
+- [**dimasd-angga**](https://github.com/dimasd-angga) (Dimas D. Angga)
+- [**Evan-Pycraft**](https://github.com/Evan-Pycraft)
+- [**ForeverYoungPp**](https://github.com/ForeverYoungPp)
+- [**GTC2080**](https://github.com/GTC2080) (TaoMu)
+- [**kabaka9527**](https://github.com/kabaka9527)
+- [**lisniuse**](https://github.com/lisniuse) (Richie)
+- [**wade19990814-hue**](https://github.com/wade19990814-hue)
+- [**wviana**](https://github.com/wviana) (Wesley Viana)
+
+Also a separate thank-you to [**Bernardxu123**](https://github.com/Bernardxu123)
+for designing the project logo (see [`docs/brand/`](./docs/brand/)), and to
+[AIGC Link](https://xhslink.com/m/80ngts127cA) for promoting the project on XiaoHongShu.
+
+<p align="center">
+  <a href="https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=esengine/DeepSeek-Reasonix" alt="contributors"/>
+  </a>
+</p>
+
+<br/>
+
 ---
 
 <p align="center">
   <sub>MIT — see <a href="./LICENSE">LICENSE</a></sub>
   <br/>
-  <sub>Built by the community at <a href="https://github.com/esengine/reasonix/graphs/contributors">esengine/reasonix</a></sub>
-  <br/>
-  <sub>Special thanks to <a href="https://xhslink.com/m/80ngts127cA">AIGC Link</a> for the promotions on XiaoHongShu.</sub>
+  <sub>Built by the community at <a href="https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors">esengine/DeepSeek-Reasonix</a></sub>
 </p>
