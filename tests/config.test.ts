@@ -12,6 +12,7 @@ import {
   isPlausibleKey,
   loadApiKey,
   loadBaseUrl,
+  loadBraveApiKey,
   loadDesktopOpenTabs,
   loadEditMode,
   loadEndpoint,
@@ -833,6 +834,7 @@ describe("config", () => {
         "tavily",
         "perplexity",
         "exa",
+        "brave",
         "ollama",
       ] as const) {
         writeConfig({ webSearchEngine: engine }, path);
@@ -852,6 +854,68 @@ describe("config", () => {
       // so an explicit `/search-engine mojeek` later still rejects loudly.
       writeConfig({ webSearchEngine: "mojeek" as unknown as "bing" }, path);
       expect(webSearchEngine(path)).toBe("bing");
+    });
+  });
+
+  describe("loadBraveApiKey", () => {
+    it("returns BRAVE_SEARCH_API_KEY env var when set", () => {
+      const orig = process.env.BRAVE_SEARCH_API_KEY;
+      process.env.BRAVE_SEARCH_API_KEY = "bsk-123";
+      try {
+        expect(loadBraveApiKey(path)).toBe("bsk-123");
+      } finally {
+        // biome-ignore lint/performance/noDelete: env var must be absent, not "undefined"
+        if (orig === undefined) delete process.env.BRAVE_SEARCH_API_KEY;
+        else process.env.BRAVE_SEARCH_API_KEY = orig;
+      }
+    });
+
+    it("falls back to BRAVE_API_KEY when BRAVE_SEARCH_API_KEY is unset", () => {
+      const origLong = process.env.BRAVE_SEARCH_API_KEY;
+      const origShort = process.env.BRAVE_API_KEY;
+      // biome-ignore lint/performance/noDelete: env var must be absent, not "undefined"
+      delete process.env.BRAVE_SEARCH_API_KEY;
+      process.env.BRAVE_API_KEY = "bak-456";
+      try {
+        expect(loadBraveApiKey(path)).toBe("bak-456");
+      } finally {
+        if (origLong !== undefined) process.env.BRAVE_SEARCH_API_KEY = origLong;
+        // biome-ignore lint/performance/noDelete: same reason
+        if (origShort === undefined) delete process.env.BRAVE_API_KEY;
+        else process.env.BRAVE_API_KEY = origShort;
+      }
+    });
+
+    it("falls back to config.braveApiKey when no env vars are set", () => {
+      const origLong = process.env.BRAVE_SEARCH_API_KEY;
+      const origShort = process.env.BRAVE_API_KEY;
+      // biome-ignore lint/performance/noDelete: env var must be absent, not "undefined"
+      delete process.env.BRAVE_SEARCH_API_KEY;
+      // biome-ignore lint/performance/noDelete: same reason
+      delete process.env.BRAVE_API_KEY;
+      try {
+        writeConfig({ braveApiKey: "cfg-brave" }, path);
+        expect(loadBraveApiKey(path)).toBe("cfg-brave");
+      } finally {
+        if (origLong !== undefined) process.env.BRAVE_SEARCH_API_KEY = origLong;
+        if (origShort !== undefined) process.env.BRAVE_API_KEY = origShort;
+      }
+    });
+
+    it("returns undefined when nothing is set", () => {
+      const origLong = process.env.BRAVE_SEARCH_API_KEY;
+      const origShort = process.env.BRAVE_API_KEY;
+      // biome-ignore lint/performance/noDelete: env var must be absent, not "undefined"
+      delete process.env.BRAVE_SEARCH_API_KEY;
+      // biome-ignore lint/performance/noDelete: same reason
+      delete process.env.BRAVE_API_KEY;
+      try {
+        writeConfig({ braveApiKey: undefined }, path);
+        expect(loadBraveApiKey(path)).toBeUndefined();
+      } finally {
+        if (origLong !== undefined) process.env.BRAVE_SEARCH_API_KEY = origLong;
+        if (origShort !== undefined) process.env.BRAVE_API_KEY = origShort;
+      }
     });
   });
 

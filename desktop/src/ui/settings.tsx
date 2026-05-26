@@ -734,6 +734,7 @@ function PageGeneral({
                   | "tavily"
                   | "perplexity"
                   | "exa"
+                  | "brave"
                   | "ollama",
               })
             }
@@ -744,6 +745,7 @@ function PageGeneral({
             <option value="tavily">{t("settings.webSearchEngineTavily")}</option>
             <option value="perplexity">{t("settings.webSearchEnginePerplexity")}</option>
             <option value="exa">{t("settings.webSearchEngineExa")}</option>
+            <option value="brave">{t("settings.webSearchEngineBrave")}</option>
             <option value="ollama">{t("settings.webSearchEngineOllama")}</option>
           </select>
         </div>
@@ -754,8 +756,8 @@ function PageGeneral({
 }
 
 const SEARCH_ENGINE_API_KEY_FIELDS: ReadonlyArray<{
-  engine: "metaso" | "tavily" | "perplexity" | "exa" | "ollama";
-  patchKey: "metasoApiKey" | "tavilyApiKey" | "perplexityApiKey" | "exaApiKey" | "ollamaApiKey";
+  engine: "metaso" | "tavily" | "perplexity" | "exa" | "brave" | "ollama";
+  patchKey: "metasoApiKey" | "tavilyApiKey" | "perplexityApiKey" | "exaApiKey" | "braveApiKey" | "ollamaApiKey";
   signupUrl: string;
 }> = [
   { engine: "metaso", patchKey: "metasoApiKey", signupUrl: "https://metaso.cn/settings/api" },
@@ -766,6 +768,7 @@ const SEARCH_ENGINE_API_KEY_FIELDS: ReadonlyArray<{
     signupUrl: "https://www.perplexity.ai/settings/api",
   },
   { engine: "exa", patchKey: "exaApiKey", signupUrl: "https://dashboard.exa.ai/api-keys" },
+  { engine: "brave", patchKey: "braveApiKey", signupUrl: "https://brave.com/search/api/" },
   { engine: "ollama", patchKey: "ollamaApiKey", signupUrl: "https://ollama.com/settings/keys" },
 ];
 
@@ -834,8 +837,8 @@ function WebSearchApiKeyRow({
   prefix,
   onSave,
 }: {
-  engine: "metaso" | "tavily" | "perplexity" | "exa" | "ollama";
-  patchKey: "metasoApiKey" | "tavilyApiKey" | "perplexityApiKey" | "exaApiKey" | "ollamaApiKey";
+  engine: "metaso" | "tavily" | "perplexity" | "exa" | "brave" | "ollama";
+  patchKey: "metasoApiKey" | "tavilyApiKey" | "perplexityApiKey" | "exaApiKey" | "braveApiKey" | "ollamaApiKey";
   signupUrl: string;
   prefix?: string;
   onSave: (patch: SettingsPatch) => void;

@@ -725,6 +725,11 @@ export interface TranslationSchema {
     exaRateLimit: string;
     exaServerError: string;
     exaParseError: string;
+    braveMissingKey: string;
+    braveUnauthorized: string;
+    braveRateLimit: string;
+    braveServerError: string;
+    braveParseError: string;
     fetchStatus: string;
     fetchRateLimit429: string;
     fetchForbidden403: string;

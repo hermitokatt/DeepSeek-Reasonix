@@ -23,6 +23,7 @@ import {
   isPlausibleKey,
   isReasoningEffort,
   loadApiKey,
+  loadBraveApiKey,
   loadDesktopOpenTabs,
   loadEditMode,
   loadEditor,
@@ -149,13 +150,22 @@ type InMessage = { tabId?: string } & (
       workspaceDir?: string;
       model?: string;
       editor?: string;
-      webSearchEngine?: "bing" | "searxng" | "metaso" | "tavily" | "perplexity" | "exa" | "ollama";
+      webSearchEngine?:
+        | "bing"
+        | "searxng"
+        | "metaso"
+        | "tavily"
+        | "perplexity"
+        | "exa"
+        | "brave"
+        | "ollama";
       webSearchEndpoint?: string | null;
       metasoApiKey?: string | null;
       tavilyApiKey?: string | null;
       perplexityApiKey?: string | null;
       exaApiKey?: string | null;
       ollamaApiKey?: string | null;
+      braveApiKey?: string | null;
       subagentModels?: Record<string, "flash" | "pro">;
       showSystemEvents?: boolean;
     }
@@ -204,7 +214,15 @@ interface SettingsEvent {
   recentWorkspaces: string[];
   model: string;
   editor?: string;
-  webSearchEngine?: "bing" | "searxng" | "metaso" | "tavily" | "perplexity" | "exa" | "ollama";
+  webSearchEngine?:
+    | "bing"
+    | "searxng"
+    | "metaso"
+    | "tavily"
+    | "perplexity"
+    | "exa"
+    | "brave"
+    | "ollama";
   webSearchEndpoint?: string;
   webSearchApiKeys?: {
     metaso?: string;
@@ -669,6 +687,7 @@ function collectWebSearchApiKeyPrefixes(): {
   perplexity?: string;
   exa?: string;
   ollama?: string;
+  brave?: string;
 } {
   return {
     metaso: maskApiKey(loadMetasoApiKey()),
@@ -676,6 +695,7 @@ function collectWebSearchApiKeyPrefixes(): {
     perplexity: maskApiKey(loadPerplexityApiKey()),
     exa: maskApiKey(loadExaApiKey()),
     ollama: maskApiKey(loadOllamaApiKey()),
+    brave: maskApiKey(loadBraveApiKey()),
   };
 }
 
@@ -2452,7 +2472,8 @@ export async function desktopCommand(opts: DesktopOptions): Promise<void> {
           msg.tavilyApiKey !== undefined ||
           msg.perplexityApiKey !== undefined ||
           msg.exaApiKey !== undefined ||
-          msg.ollamaApiKey !== undefined
+          msg.ollamaApiKey !== undefined ||
+          msg.braveApiKey !== undefined
         ) {
           const cfg = readConfig();
           if (msg.webSearchEngine !== undefined) cfg.webSearchEngine = msg.webSearchEngine;
@@ -2473,6 +2494,9 @@ export async function desktopCommand(opts: DesktopOptions): Promise<void> {
           }
           if (msg.ollamaApiKey !== undefined) {
             cfg.ollamaApiKey = msg.ollamaApiKey?.trim() || undefined;
+          }
+          if (msg.braveApiKey !== undefined) {
+            cfg.braveApiKey = msg.braveApiKey?.trim() || undefined;
           }
           writeConfig(cfg);
         }

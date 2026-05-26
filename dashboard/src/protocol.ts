@@ -286,6 +286,7 @@ export type WebSearchEngineName =
   | "tavily"
   | "perplexity"
   | "exa"
+  | "brave"
   | "ollama";
 
 export type SettingsEvent = {

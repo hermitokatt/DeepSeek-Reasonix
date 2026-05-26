@@ -244,7 +244,7 @@ export type Settings = {
   recentWorkspaces: string[];
   model: string;
   editor?: string;
-  webSearchEngine?: "bing" | "searxng" | "metaso" | "tavily" | "perplexity" | "exa" | "ollama";
+  webSearchEngine?: "bing" | "searxng" | "metaso" | "tavily" | "perplexity" | "exa" | "brave" | "ollama";
   webSearchEndpoint?: string;
   webSearchApiKeys?: {
     metaso?: string;
@@ -252,6 +252,7 @@ export type Settings = {
     perplexity?: string;
     exa?: string;
     ollama?: string;
+    brave?: string;
   };
   subagentModels?: Record<string, "flash" | "pro">;
   showSystemEvents?: boolean;
