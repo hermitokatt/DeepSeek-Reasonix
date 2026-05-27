@@ -261,10 +261,18 @@ export type Settings = {
   version: string;
 };
 
+export type BalanceInfoItem = {
+  currency: string;
+  total: number;
+  granted?: number;
+  toppedUp?: number;
+};
+
 export type Balance = {
   currency: string;
   total: number;
   isAvailable: boolean;
+  infos: BalanceInfoItem[];
 };
 
 type MentionResults = { nonce: number; query: string; results: string[] };
@@ -921,6 +929,7 @@ export function applyIncoming(state: State, ev: IncomingEvent): State {
           currency: ev.currency,
           total: ev.total,
           isAvailable: ev.isAvailable,
+          infos: ev.balanceInfos ?? [],
         },
       };
     case "$qq_settings":
